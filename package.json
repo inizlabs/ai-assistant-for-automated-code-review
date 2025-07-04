@@ -1,0 +1,24 @@
+{
+  "name": "ai-assistant-for-automated-code-review",
+  "version": "0.1.0",
+  "description": "MVP d'un assistant IA pour revue de code automatisée (multi-langages, suggestions, intégration GitHub/GitLab)",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest"
+  },
+  "author": "Inizlabs",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "ts-node-dev": "^2.0.0",
+    "@types/express": "^4.17.21",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11"
+  }
+}
