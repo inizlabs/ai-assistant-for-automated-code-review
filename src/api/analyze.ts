@@ -21,7 +21,11 @@ router.post('/', async (req: Request, res: Response) => {
       const { issues, suggestions } = await analyzeWithESLint(code);
       return res.json({ issues, suggestions });
     }
-    // TODO: Ajouter d'autres analyseurs pour d'autres langages
+    if (language.toLowerCase() === 'python') {
+      const { analyzeWithBandit } = await import('../analysis/bandit');
+      const { issues } = await analyzeWithBandit(code);
+      return res.json({ issues, suggestions: [] });
+    }
     // Réponse mockée pour les autres langages
     const issues = [
       { type: 'bug', message: 'Exemple de bug détecté', line: 3 },
