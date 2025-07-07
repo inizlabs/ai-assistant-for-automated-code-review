@@ -1,46 +1,46 @@
 # AI Assistant for Automated Code Review
 
-MVP d'un assistant IA pour revue de code automatisée :
-- Analyse de code source multi-langages (JS/TS, Python)
-- Détection de bugs, vulnérabilités (Bandit), dettes techniques, erreurs de style (flake8)
-- Suggestions d'amélioration via IA (à venir)
-- Intégration GitHub/GitLab
+MVP of an AI-powered automated code review assistant:
+- Multi-language static code analysis (JS/TS, Python)
+- Detection of bugs, vulnerabilities (Bandit), technical debt, and style errors (flake8)
+- AI-powered improvement suggestions (in progress)
+- GitHub/GitLab integration (planned)
 
-## Démarrage rapide
+## Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-Pour l'analyse Python, assurez-vous que Bandit et flake8 sont installés globalement ou dans un venv accessible :
+For Python analysis, ensure Bandit and flake8 are installed globally or in an accessible virtual environment:
 
 ```bash
 pip install bandit flake8
 ```
 
-## Structure du projet
+## Project Structure
 
-- `src/analysis/` : Analyseurs de code (ESLint, Bandit, flake8)
-- `src/suggestions/` : Génération de suggestions IA
-- `src/integrations/` : Intégrations GitHub/GitLab
-- `src/api/` : Endpoints REST
-- `src/utils/` : Fonctions utilitaires
+- `src/analysis/` : Code analyzers (ESLint, Bandit, flake8)
+- `src/suggestions/` : AI-powered suggestion generation
+- `src/integrations/` : GitHub/GitLab integrations
+- `src/api/` : REST API endpoints
+- `src/utils/` : Utility functions
 
-## Endpoint principal
+## Main Endpoint
 
 ### POST `/api/analyze`
-Analyse un extrait de code et retourne les problèmes détectés.
+Analyzes a code snippet and returns detected issues and suggestions.
 
-**Body JSON :**
+**Request body:**
 ```json
 {
-  "code": "<votre code>",
-  "language": "javascript" // ou "typescript" ou "python"
+  "code": "<your code>",
+  "language": "javascript" // or "typescript" or "python"
 }
 ```
 
-**Réponse :**
+**Response:**
 ```json
 {
   "issues": [
@@ -49,28 +49,27 @@ Analyse un extrait de code et retourne les problèmes détectés.
       "message": "...",
       "line": 2,
       "column": 5,
-      "severity": "...", // pour Bandit
-      "code": "..." // pour flake8
+      "severity": "...", // Bandit only
+      "code": "..." // flake8 only
     }
   ],
   "suggestions": []
 }
 ```
 
-## Analyse statique prise en charge
-- **JavaScript/TypeScript** : ESLint + plugins (security, promise, import, node, jsdoc, sonarjs)
-- **Python** :
-  - Bandit (vulnérabilités)
+## Supported Static Analysis
+- **JavaScript/TypeScript**: ESLint + plugins (security, promise, import, node, jsdoc, sonarjs)
+- **Python**:
+  - Bandit (vulnerabilities)
   - flake8 (lint/style/PEP8)
 
-## Roadmap MVP
-- [x] Initialisation du projet
-- [x] Analyse statique Python/JS
-- [ ] Suggestions IA
-- [ ] Intégration GitHub/GitLab
+## MVP Roadmap
+- [x] Project initialization
+- [x] Static analysis for Python/JS
+- [ ] AI-powered suggestions
+- [ ] GitHub/GitLab integration
+- [ ] GitHub Action integration
 
-- [ ] Intégration GitHub Action
+## License
 
-## Licence
-
-Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus de détails.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
