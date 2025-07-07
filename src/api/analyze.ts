@@ -23,7 +23,12 @@ router.post('/', async (req: Request, res: Response) => {
     }
     if (language.toLowerCase() === 'python') {
       const { analyzeWithBandit } = await import('../analysis/bandit');
-      const { issues } = await analyzeWithBandit(code);
+      const { analyzeWithFlake8 } = await import('../analysis/flake8');
+      const [banditResult, flake8Result] = await Promise.all([
+        analyzeWithBandit(code),
+        analyzeWithFlake8(code)
+      ]);
+      const issues = [...(banditResult.issues || []), ...(flake8Result.issues || [])];
       return res.json({ issues, suggestions: [] });
     }
     // Réponse mockée pour les autres langages
