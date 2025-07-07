@@ -69,9 +69,8 @@ Analyse un extrait de code et retourne les problèmes détectés.
 - [ ] Suggestions IA
 - [ ] Intégration GitHub/GitLab
 
-## Licence
-MIT
 - [ ] Intégration GitHub Action
 
 ## Licence
-MIT
+
+Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus de détails.
